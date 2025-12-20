@@ -42,3 +42,4 @@
 //
 // ---> 2-state variables: bit, byte, int, shortint, lognint (default: 0)
 //
+// ---> ++ & -- operators are treated as blocking assignment in SV.
