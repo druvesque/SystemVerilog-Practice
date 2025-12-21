@@ -28,6 +28,12 @@
 // ---> #1step advances the simulator by one delta cycle to allow non-blocking
 //      assignments to complete without advancing time. 
 //
+//      At one time instant, let's say 't', the clock time reaches at t first,
+//      then #1step of that time instant 't' is encountered, and then the
+//      simulation cycle ends, so for 1 time instant, we can say that 
+//      clock <= #1step <= simulation time (in the order of occurence in that
+//      instant 't')
+//
 // ---> A delta cycle is a zero-time simulation step used by the simulator to
 //      order and settle events at the same simulation time. (time does not
 //      advance, signal values can change (active, nba), exists only in
