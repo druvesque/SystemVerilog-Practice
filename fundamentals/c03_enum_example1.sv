@@ -4,7 +4,7 @@ module example3;
     int foo;
 
     initial begin
-        $display("Initial, current_state: %s = %0d", state.name, state);
+        $display("Initial, current_state: %s = %0d", state.name(), state);
         $display("Initial, next_state: %s = %0d", next_state.name, next_state);
 
         state = next_state;

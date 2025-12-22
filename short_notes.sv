@@ -49,3 +49,20 @@
 // ---> 2-state variables: bit, byte, int, shortint, lognint (default: 0)
 //
 // ---> ++ & -- operators are treated as blocking assignment in SV.
+//
+// ---> Enum
+//      1. No two elements can have the same value. 
+//      2. Default type: int, default starting value: 0
+//      3. 'x' is legal in the value, but the next state should either be
+//         defined properly or keep the 'x' value states at the end of the enum
+//
+// ---> Enum Methods: first(), last(), next(), prev(), name(), num()
+//                                                             (total enum val)
+//
+// ---> String
+//      1. Default value: ""
+//      2. Dynamic length
+//      3. Not NULL terminated i.e doesn't end with '\0'
+//
+// ---> String Operations: {str1, str2} (concatenation), {N{str}} (replication),
+//                         [index], ==, !=, >, <, >=, <= 
