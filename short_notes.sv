@@ -81,3 +81,16 @@
 //
 //         Example of foreach iteration: int A[2][3][4], bit [3:0][2:1]B[5:1][4]
 //                                       foreach(A[i][j][k]), foreach(B[q][r], ,[s])
+//
+// ---> Arrays
+//      1. Out of bounds write is ignored, out of bounds read is return 'x'
+//         for 4-state and 0 for 2-state.
+//      2. Declared using '{} or '{n{}} notation
+//      3. Two types of fixed size arrays, packed and unpacked
+//      4. $size returns size of the array
+//      5. int arr[4] is a shorthand of arr[0:3];
+//      6. Contiguious memory allocation is used for both packed and unpacked arrays
+//      7. When indexing mixed arrays, unpacked dimensions are referenced
+//         first from left to right. Then packed dimensions are referenced
+//         from left to right.
+//      
