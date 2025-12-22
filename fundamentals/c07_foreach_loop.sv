@@ -11,4 +11,5 @@ module foreach_loop;
             $display("k: %0d, m: %0d, value: %0d", k, m, prod[k][m]);
         end
     end
+
 endmodule

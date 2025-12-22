@@ -71,3 +71,13 @@
 //                      icompare(), substr(), atobin(), atooct(), atohex(),
 //                      atoi(), atoreal(), realtoa(), bintoa(), octtoa(),
 //                      itoa(), hextoa()
+//
+// ---> Loops
+//      1. for: sv allows, non static (auto) storage of loop variables
+//      2. while: conditional loop
+//      3. do-while: executes atleast once
+//      4. foreach: don't need to declare the iterator, automatically converts
+//                  to for loop
+//
+//         Example of foreach iteration: int A[2][3][4], bit [3:0][2:1]B[5:1][4]
+//                                       foreach(A[i][j][k]), foreach(B[q][r], ,[s])
