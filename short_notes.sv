@@ -100,6 +100,5 @@
 //
 // ---> Types of Arrays
 //      1. Dynamic Arrays
-//      2. Queues
-//      3. Sparse / Associative Arrays
-//      
+//      2. Queues int a[$], (size, insert, delete, pop_front, pop_back, push_front, push_back)
+//      3. Sparse / Associative Arrays (not contiguous, int arr[*] to initialize      

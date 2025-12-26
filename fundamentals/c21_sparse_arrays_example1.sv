@@ -9,8 +9,8 @@ module example21;
             $display("index: %0d, value: %0d", indx, asso_spar[indx]);
             indx = indx << 1;
         end
-        // foreach (asso_spar[i]) ERROR 
-        //     $display("asso_spar[%h] = %h", i, asso_spar[i]);
+        foreach (asso_spar[i]) 
+            $display("asso_spar[%h] = %h", i, asso_spar[i]);
 
         $display("\n");
         if (asso_spar.first(indx)) begin
@@ -18,6 +18,7 @@ module example21;
                 $display("asso_spar[%0d] = %0d", indx, asso_spar[indx]);
             while (asso_spar.next(indx));
         end
+        $display("\nNext: %0d", asso_spar.next(indx));
 
         // asso_spar.first(indx);
         // asso_spar.delete(indx);
