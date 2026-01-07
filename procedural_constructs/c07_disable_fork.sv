@@ -1,8 +1,17 @@
 module disable_fork;
     task sub_process;
-        $display("Time: %g, Sub-Process Started", $time);
-        #10;
-        $display("Time: %g, Sub-Process Finished", $time);
+        fork
+            begin
+                $display("Time: %g, Sub-Process Started", $time);
+                #10;
+                $display("Time: %g, Sub-Process Finished", $time);
+            end
+            begin
+                $display("t1: %g", $time);
+                #20;
+                $display("t2: %g", $time);
+            end
+        join
     endtask
     initial begin
         $display("----------------------------------------------");
