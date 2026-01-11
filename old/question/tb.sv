@@ -3,13 +3,13 @@ module memory_tb (dut_if.tb_ports tp);
   timeunit 1ns;
   timeprecision 1ns;
   
-  logic [7:0]        data;
+  logic [7:0]        r_data;
   logic              read;
   logic              write;
   logic [4:0]        addr;
   logic [tp.WWIDTH-1:0] data_w;
 
-  // memory memo(.*); 
+  memory memo(.*); 
 
   assign data=read ? 'z :data_w;
   localparam bit debug = 1;
