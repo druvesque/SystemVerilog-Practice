@@ -2,17 +2,24 @@
 interface dut_if #(parameter int unsigned WWIDTH = 8, parameter int unsigned AWIDTH = 5);
     
     logic [WWIDTH - 1 : 0] r_data;
+    logic [WWIDTH - 1 : 0] w_data;
     logic [AWIDTH - 1 : 0] addr;
     logic                  read;
     logic                  write;
-    logic [WWIDTH -1 :0]   w_data;
 
-    modport DUT(output r_data, input addr, input read, input write, input w_data);
-    modport tb_ports(output r_data, input addr, input read, input write, input w_data, import read_mem, import write_mem, import print_status); 
+    modport DUT     (input addr, w_data, read, write,
+                     output r_data
+                    );
+
+    modport tb_ports(input r_data,
+                     output addr, w_data, write, read,
+                     import read_mem, write_mem, print_status
+                    ); 
 
     task write_mem (input [AWIDTH-1:0] waddr,
 		            input [WWIDTH-1:0] wdata,
-		            input debug = 0);
+		            input debug = 0
+                   );
 
 	write = 0;
 	read = 0;
@@ -24,9 +31,11 @@ interface dut_if #(parameter int unsigned WWIDTH = 8, parameter int unsigned AWI
 	#5ns write=0;
   endtask 
  
-  task read_mem ( input [AWIDTH-1:0] raddr,
-		          output [WWIDTH-1:0] rdata,
-		          input debug = 0);
+  task read_mem (input [AWIDTH-1:0] raddr,
+		         output [WWIDTH-1:0] rdata,
+		         input debug = 0
+                );
+
 	write = 0;
 	read = 1;
 	addr = raddr;
