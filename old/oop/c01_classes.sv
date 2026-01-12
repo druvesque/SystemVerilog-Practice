@@ -2,12 +2,12 @@ class BusTran;
 
     bit [31:0] addr, crc, data [8];
 
-    function calc_crc(data);
+    function void calc_crc(data);
         crc = addr ^ data;
         $display("CRC: %0d", crc);
     endfunction:calc_crc
 
-    function display;
+    function void display;
         $display("BusTran: %h", addr);
     endfunction: display
 
