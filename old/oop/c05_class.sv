@@ -10,8 +10,10 @@ program tb;
         t2 = new();
         t2.data = 2;
         t2 = t1;
+        t3 = new t2;
         t2.data = 5;
         $display(t1.data);
         $display(t2.data);
+        $display(t3.data);
     end
 endprogram
