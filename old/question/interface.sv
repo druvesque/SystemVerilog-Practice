@@ -1,20 +1,22 @@
 `timescale 1ns/1ns
 interface dut_if #(parameter int unsigned WWIDTH = 8, parameter int unsigned AWIDTH = 5);
     
-    logic [WWIDTH - 1 : 0] r_data;
-    logic [WWIDTH - 1 : 0] w_data;
-    logic [AWIDTH - 1 : 0] addr;
-    logic                  read;
-    logic                  write;
+    wire logic [WWIDTH - 1 : 0] data;
+    logic      [AWIDTH - 1 : 0] addr;
+    logic                       read;
+    logic                       write;
 
-    modport DUT     (input addr, w_data, read, write,
-                     output r_data
+    modport DUT     (input addr, read, write,
+                     inout data
                     );
 
-    modport tb_ports(input r_data,
-                     output addr, w_data, write, read,
+    modport tb_ports(inout data,
+                     output addr, write, read,
                      import read_mem, write_mem, print_status
-                    ); 
+                    );
+
+    logic [WWIDTH - 1 : 0] data_w;
+    assign data = read ? 'z : data_w;
 
     task write_mem (input [AWIDTH-1:0] waddr,
 		            input [WWIDTH-1:0] wdata,
@@ -24,7 +26,7 @@ interface dut_if #(parameter int unsigned WWIDTH = 8, parameter int unsigned AWI
 	write = 0;
 	read = 0;
 	addr = waddr;
-	w_data = wdata;
+	data_w = wdata;
 	#5ns write = 1;
 	if (debug == 1)
 		$display("%t: write address: %d, data = %h", $time,waddr,wdata);
@@ -39,7 +41,7 @@ interface dut_if #(parameter int unsigned WWIDTH = 8, parameter int unsigned AWI
 	write = 0;
 	read = 1;
 	addr = raddr;
-	#5ns rdata = r_data;
+	#5ns rdata = data;
      	if (debug == 1)
 		$display("%t, read address: %d,data=%h",$time,raddr,rdata);
 	#5ns read = 0;

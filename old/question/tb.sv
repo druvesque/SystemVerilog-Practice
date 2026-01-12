@@ -4,6 +4,7 @@ module memory_tb (dut_if.tb_ports tp);
   localparam bit debug = 1;
    
   initial begin 
+    logic [tp.WWIDTH - 1 : 0] data_read;
 	int unsigned errors;
 	$timeformat(-9,0,"ns",6);
 	$display("CLEAR THE MEMORY FIRST");
@@ -15,8 +16,8 @@ module memory_tb (dut_if.tb_ports tp);
 
 	for (int i = 0; i <= 2**tp.AWIDTH-1; ++i)
 		begin 
-		  tp.read_mem(i, tp.r_data, 0);
-		  if(tp.r_data !== 0)
+		  tp.read_mem(i, data_read, 0);
+		  if(data_read !== 0)
 		     ++errors;
 		end 
 
@@ -29,8 +30,8 @@ module memory_tb (dut_if.tb_ports tp);
     $display("\n");
 	for (int i = 0; i <= 2**tp.AWIDTH-1; ++i)
 		begin 
-		  tp.read_mem(i, tp.r_data, debug);
-		  if (tp.r_data != i)
+		  tp.read_mem(i, data_read, debug);
+		  if (data_read != i)
 		      ++errors;
 		end 
 
