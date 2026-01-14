@@ -6,13 +6,15 @@ class foo;
     endtask
 endclass
 
-module c17_tb;
-    foo b;
+program c17_tb;
+    // foo b;
     initial begin
-        // foo b;
+        foo b;
         b = new();
         b.set(123);
         b = null;
+        #10
         $display(b);
+        // b.set(1);
     end
-endmodule
+endprogram
