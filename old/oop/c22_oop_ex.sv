@@ -28,6 +28,7 @@ program c22_tb;
         K k;
         M m;
         sport_coupe cars[4];
+        // cars = new(4);
         k = new();
         k.color = BLUE;
         m = new();
