@@ -1,19 +1,14 @@
-module always_comb_latch_error;
-
-  logic a, sel;
-  logic y;
+module and_vector (
+  input  logic [7:0] a,
+  input  logic [7:0] b,
+  output logic [7:0] y
+);
 
   always_comb begin
-    if (sel)
-      y = a;
-    // missing else -> latch attempt
-  end
-
-  initial begin
-    a = 1;
-    sel = 0;
-    #10 sel = 1;
-    #10 $finish;
+    for (int i = 0; i < 8; i++) begin
+      y[i] = a[i] & b[i];
+    end
   end
 
 endmodule
+
