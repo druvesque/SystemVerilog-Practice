@@ -19,5 +19,18 @@
 // - gate instantiation
 // - primitive instances
 // - specify blocks
+// - assign statements
+//
+// sequence abc
+//     @(posedge clk) (req ##1 ack ##1 !req)
+// endsequence
+//
+// property xyz
+//     @(posedge clk) (req ##1 ack ##1 !req)
+// endproperty
+//
+// property xyz1
+//     @(posedge clk) |-> (req ##1 ack ##1 !req)
+// endproperty
 
 
